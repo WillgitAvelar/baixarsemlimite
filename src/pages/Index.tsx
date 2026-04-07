@@ -122,7 +122,7 @@ const Index = () => {
 
         </header>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9761562870144270"
-     crossorigin="anonymous"></script>
+     crossOrigin="anonymous"></script>
         {/* Search */}
         <div className="mb-8">
           <div className="flex gap-2">
@@ -155,10 +155,10 @@ const Index = () => {
           </button>
         </div>
  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9761562870144270"
-     crossorigin="anonymous"></script>
-<!-- Primeiro Anuncio -->
-<ins class="adsbygoogle"
-     style="display:block"
+     crossOrigin="anonymous"></script>
+{/* Primeiro Anuncio */}
+<ins className="adsbygoogle"
+     style={{ display: "block" }}
      data-ad-client="ca-pub-9761562870144270"
      data-ad-slot="5574341635"
      data-ad-format="auto"
