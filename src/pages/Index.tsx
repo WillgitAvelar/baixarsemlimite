@@ -120,7 +120,8 @@ const Index = () => {
             ))}
           </div>
         </header>
-
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9761562870144270"
+     crossorigin="anonymous"></script>
         {/* Search */}
         <div className="mb-8">
           <div className="flex gap-2">
