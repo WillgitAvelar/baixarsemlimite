@@ -152,7 +152,18 @@ const Index = () => {
             📋 Colar da área de transferência
           </button>
         </div>
-
+ <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9761562870144270"
+     crossorigin="anonymous"></script>
+<!-- Primeiro Anuncio -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-9761562870144270"
+     data-ad-slot="5574341635"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
         {/* Video Result */}
         {video && (
           <div className="mb-8">
