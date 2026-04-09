@@ -5,7 +5,13 @@ import { Button } from "@/components/ui/button";
 import { VideoCard } from "@/components/VideoCard";
 import { DownloadHistory, type HistoryItem } from "@/components/DownloadHistory";
 import { FeatureCards } from "@/components/FeatureCards";
-import { fetchVideo, isValidUrl, detectPlatform, getPlatformLabel, type VideoData } from "@/lib/downloader";
+import {
+  fetchVideo,
+  isValidUrl,
+  detectPlatform,
+  getPlatformLabel,
+  type VideoData,
+} from "@/lib/downloader";
 import { toast } from "@/hooks/use-toast";
 import { AdBanner } from "@/components/AdBanner";
 
@@ -40,7 +46,6 @@ const Index = () => {
 
   const detectedPlatform = url.trim() ? detectPlatform(url) : null;
 
-  // ✅ Carrega AdSense corretamente
   useEffect(() => {
     const script = document.createElement("script");
     script.src =
@@ -92,7 +97,6 @@ const Index = () => {
         saveHistory(updated);
         return updated;
       });
-
     } catch (err) {
       toast({
         title: "Erro",
@@ -133,31 +137,18 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
-      {/* Background */}
-      <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
-      </div>
-
       <div className="relative z-10 max-w-2xl mx-auto px-4 py-8 md:py-16">
-        
-        {/* Header */}
-        <header className="text-center mb-10">
-          <h1 className="text-4xl font-bold">Baixar</h1>
-          <p className="text-muted-foreground">
-            Baixe vídeos sem marca d'água
-          </p>
 
-          <div className="flex justify-center gap-2 mt-4">
-            {(Object.keys(platformIcons) as Platform[]).map((p) => (
-              <span key={p} className="text-xs">
-                {platformIcons[p]} {getPlatformLabel(p)}
-              </span>
-            ))}
-          </div>
+        {/* HEADER */}
+        <header className="text-center mb-10">
+          <h1 className="text-4xl font-bold">Baixar Vídeos Online</h1>
+          <p className="text-muted-foreground mt-2">
+            Baixe vídeos do TikTok, YouTube, Instagram e Pinterest de forma rápida,
+            gratuita e sem marca d'água.
+          </p>
         </header>
 
-        {/* Search */}
+        {/* SEARCH */}
         <div className="mb-8">
           <div className="flex gap-2">
             <div className="relative flex-1">
@@ -166,24 +157,13 @@ const Index = () => {
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && handleFetch()}
-                placeholder="Cole o link..."
+                placeholder="Cole o link do vídeo..."
                 className="pl-10 h-12"
               />
-
-              {detectedPlatform && (
-                <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs">
-                  {platformIcons[detectedPlatform]}{" "}
-                  {getPlatformLabel(detectedPlatform)}
-                </span>
-              )}
             </div>
 
             <Button onClick={() => handleFetch()} disabled={loading}>
-              {loading ? (
-                <Loader2 className="animate-spin" />
-              ) : (
-                <ArrowDown />
-              )}
+              {loading ? <Loader2 className="animate-spin" /> : <ArrowDown />}
             </Button>
           </div>
 
@@ -192,13 +172,13 @@ const Index = () => {
           </button>
         </div>
 
-        {/* ✅ Anúncio (componente seguro) */}
+        {/* ANÚNCIO */}
         <AdBanner />
 
-        {/* Video */}
+        {/* RESULTADO */}
         {video && <VideoCard video={video} />}
 
-        {/* History */}
+        {/* HISTÓRICO */}
         <DownloadHistory
           items={history}
           onClear={() => {
@@ -208,11 +188,49 @@ const Index = () => {
           onSelect={handleHistorySelect}
         />
 
-        {!video && <FeatureCards />}
+        {/* CONTEÚDO FORTE (ADSENSE) */}
+        {!video && (
+          <div className="mt-10 text-sm text-muted-foreground space-y-4">
 
-        <footer className="text-center text-xs mt-10">
-          <p>Use com responsabilidade</p>
+            <h2 className="text-lg font-semibold text-center">
+              Como baixar vídeos?
+            </h2>
+
+            <p>
+              Cole o link do vídeo desejado e clique no botão de download.
+              Nossa ferramenta processa o conteúdo rapidamente e disponibiliza
+              as opções de download.
+            </p>
+
+            <p>
+              Nossa ferramenta foi desenvolvida para facilitar o acesso a conteúdos
+              públicos da internet de maneira simples e eficiente.
+            </p>
+
+            <h3 className="font-semibold mt-4">Plataformas suportadas</h3>
+            <p>✔ TikTok – vídeos sem marca d'água</p>
+            <p>✔ YouTube – vídeos e áudios</p>
+            <p>✔ Instagram – reels e vídeos</p>
+            <p>✔ Pinterest – mídias</p>
+
+            <h3 className="font-semibold mt-4">Vantagens</h3>
+            <p>• Sem necessidade de login</p>
+            <p>• Totalmente gratuito</p>
+            <p>• Processamento rápido</p>
+
+            <h3 className="font-semibold mt-4">Perguntas Frequentes</h3>
+            <p><strong>É gratuito?</strong> Sim, totalmente gratuito.</p>
+            <p><strong>Precisa instalar algo?</strong> Não, funciona direto no navegador.</p>
+          </div>
+        )}
+
+        {/* FOOTER */}
+        <footer className="text-center text-xs mt-10 space-x-4">
+          <a href="/sobre">Sobre</a>
+          <a href="/privacidade">Privacidade</a>
+          <a href="/termos">Termos</a>
         </footer>
+
       </div>
     </div>
   );
